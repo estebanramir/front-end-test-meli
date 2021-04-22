@@ -1,0 +1,20 @@
+{
+  "name": "api-app",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon --watch . ./bin/www",
+    "debug": "set DEBUG=express:* & nodemon --watch . ./bin/www"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.20.0",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "jsonschema": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
