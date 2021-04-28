@@ -33,7 +33,6 @@ const itemMapper = (item) => {
 };
 
 const fetchItemsList = async (req, res) => {
-  try {
     const query = req.query.q;
     const request = await axios.get(
       `https://api.mercadolibre.com/sites/MLA/search?q=${query}&limit=4`
@@ -51,9 +50,6 @@ const fetchItemsList = async (req, res) => {
     } else {
       return res.status(404).send({ msg: `items not found` });
     }
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
 };
 
 const itemDetailMapper = (item, desc) => {
@@ -75,7 +71,6 @@ const itemDetailMapper = (item, desc) => {
 };
 
 const getItemDescription = async (itemId) => {
-  try {
     const itemDescRequest = await axios.get(
       `https://api.mercadolibre.com/items/${itemId}/description`
     );
@@ -84,16 +79,11 @@ const getItemDescription = async (itemId) => {
       return data.plain_text;
     }
     return undefined;
-  } catch (error) {
-    return undefined;
-  }
 };
 
 const fetchItemById = async (req, res) => {
-  try {
     const { itemId } = req.params;
     const itemRequest = await axios.get(`https://api.mercadolibre.com/items/${itemId}`);
-
     if (itemRequest.data) {
       const itemDescRequest = await getItemDescription(itemId);
 
@@ -108,9 +98,6 @@ const fetchItemById = async (req, res) => {
     } else {
       return res.status(404).send({ msg: `item not found` });
     }
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
 };
 
 module.exports = {
