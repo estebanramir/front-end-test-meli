@@ -1,5 +1,7 @@
+@import "../../utilities/variables";
+
 .search-list {
-  background-color: #ffffff;
+  background-color: $white;
   border-radius: 3px;
   padding: 0 10px;
   li:last-child {

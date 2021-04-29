@@ -1,17 +1,19 @@
+@import "../../utilities/variables";
+
 .breadcrum {
-  padding: 15px 15px;
-  font-size: 0.9em;
+  padding: 15px 15px 15px 0;
+  font-size: 12px;
   &-divider {
-    width: 10px;
+    width: 5px;
     margin: 0 5px;
-    color: #ffffff54;
+    color: $light-gray;
   }
   a {
     text-decoration: none;
-    color: #5a5858;
+    color: $gray;
   }
   span {
-    color: #555252;
+    color: $gray;
     font-weight: bold;
   }
   &-category {

@@ -1,6 +1,12 @@
+@import "./utilities/variables";
+
 .layout {
   .content {
-    background-color: #4745453f;
-    padding: 0 20%;
+    background-color: #ebe9e9;
+    padding: 0 5%;
+    min-height: 93vh;
+    @media (min-width: $desktop-screen) {
+      padding: 0 20%;
+    }
   }
 }

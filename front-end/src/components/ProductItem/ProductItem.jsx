@@ -32,7 +32,9 @@ const ProductItem = (props) => {
 
       <div className="search-item__content-wrapper">
         <div className="search-item__content">
-          <span className="">{priceFormatter(price)}</span>
+          <span className="search-item__content--price">
+            {priceFormatter(price)}
+          </span>
           {free_shipping && (
             <span className="search-item__shipping">
               <img src="/delivery-truck.svg" alt="icono envio gratis" />
@@ -44,7 +46,7 @@ const ProductItem = (props) => {
         </Link>
       </div>
       <div className="search-item__location">
-        <address className="">{state_name}</address>
+        <address>{state_name}</address>
       </div>
     </li>
   );

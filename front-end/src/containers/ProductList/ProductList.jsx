@@ -8,13 +8,24 @@ const ProductList = () => {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
+
   let query = useQuery();
   const options = {};
-  const { loading, error, data = [] } = useFetch(
-    `http://localhost:3001/api/items?q=${encodeURIComponent(query)}`,
+  const {
+    loading,
+    error,
+    data = [],
+  } = useFetch(
+    `http://localhost:3001/api/items?q=$${encodeURIComponent(query).substring(
+      9
+    )}`,
     options,
-    []
+    [encodeURIComponent(query)]
   );
+  const estasies = `http://localhost:3001/api/items?q=$${encodeURIComponent(
+    query
+  ).substring(9)}`;
+  console.log({ estasies });
   console.log({ data });
   console.log({ error });
   if (error === undefined && !loading) {
