@@ -35,6 +35,9 @@
   &__search {
     display: flex;
     flex-direction: row;
-    width: 58%;
+    width: 81%;
+    @media (min-width: $desktop-screen) {
+      width: 58%;
+    }
   }
 }

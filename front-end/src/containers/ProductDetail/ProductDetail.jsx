@@ -40,7 +40,6 @@ const ProductDetail = () => {
               <p className="pd-description__content">{description}</p>
             </div>
           </div>
-
           <div className="pd-header">
             <div className="pd-header-subtitle">
               <span>{condition}</span> - <span>{sold_quantity} vendidos</span>

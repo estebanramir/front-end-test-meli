@@ -29,7 +29,6 @@ const ProductItem = (props) => {
           <img src={picture} className="search-item__image" alt="" />
         </Link>
       </div>
-
       <div className="search-item__content-wrapper">
         <div className="search-item__content">
           <span className="search-item__content--price">
