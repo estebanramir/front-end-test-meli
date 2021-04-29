@@ -1,0 +1,45 @@
+.search-item {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0;
+  justify-content: space-between;
+  border-bottom: 2px solid #a7a5a5c4;
+  &__image {
+    flex-basis: 160px;
+    width: 160px;
+    height: 160px;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-self: start;
+      width: 100%;
+    }
+  }
+  &__location {
+    color: #757474c4;
+    font-size: 12px;
+  }
+  &__shipping {
+    background-color: #2aff4d;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    img {
+      margin: auto;
+      width: 13px;
+    }
+  }
+  a {
+    color: black;
+    text-decoration: none;
+    > h2 {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+}

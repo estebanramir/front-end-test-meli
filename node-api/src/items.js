@@ -42,7 +42,7 @@ const fetchItemsList = async (req, res) => {
     if (data) {
       const catergoriesList = categoryListBuilder(data.filters);
       const result = {
-        author: { name: '', lastname: '' },
+        author: { name: 'Esteban', lastname: 'Ramirez' },
         categories: catergoriesList,
         items: data.results.map(itemMapper),
       };
@@ -52,55 +52,6 @@ const fetchItemsList = async (req, res) => {
     }
 };
 
-const itemDetailMapper = (item, desc) => {
-  const itemMap = {
-    id: item.id,
-    title: item.title,
-    price: {
-      currency: item.currency_id,
-      amount: item.price,
-      decimals: 0,
-    },
-    picture: '',
-    condition: item.condition,
-    free_shipping: item.shipping.free_shipping,
-    sold_quantity: item.sold_quantity,
-    description: desc,
-  };
-  return itemMap;
-};
-
-const getItemDescription = async (itemId) => {
-    const itemDescRequest = await axios.get(
-      `https://api.mercadolibre.com/items/${itemId}/description`
-    );
-    const { data } = itemDescRequest;
-    if (data) {
-      return data.plain_text;
-    }
-    return undefined;
-};
-
-const fetchItemById = async (req, res) => {
-    const { itemId } = req.params;
-    const itemRequest = await axios.get(`https://api.mercadolibre.com/items/${itemId}`);
-    if (itemRequest.data) {
-      const itemDescRequest = await getItemDescription(itemId);
-
-      const result = {
-        author: {
-          name: '',
-          lastname: '',
-        },
-        item: itemDetailMapper(itemRequest.data, itemDescRequest),
-      };
-      return res.status(200).send(result);
-    } else {
-      return res.status(404).send({ msg: `item not found` });
-    }
-};
-
 module.exports = {
   fetchItemsList: fetchItemsList,
-  fetchItemById: fetchItemById,
 };

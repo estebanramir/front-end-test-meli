@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('firebase-backend:server');
 var http = require('http');
 
-var port = normalizePort(process.env.PORT || '3005');
+var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
 var server = http.createServer(app);

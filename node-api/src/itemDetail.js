@@ -28,6 +28,7 @@ const itemDetailMapper = (item, desc) => {
 };
 
 const getItemDescription = async (itemId) => {
+  try{
     const itemDescRequest = await axios.get(
       `${API_URL}${ITEMS}${itemId}${ITEMS_DESCRIPTION}`
     );
@@ -36,9 +37,13 @@ const getItemDescription = async (itemId) => {
       return data.plain_text;
     }
     return null;
+    } catch (err) {
+    res.status(500).send({ err: err.message });
+   }
 };
 
 const getItemCategories = async (categoryId) => {
+  try{
     const Categories = await axios.get(
       `${API_URL}${CATEGORIES}${categoryId}`
     );
@@ -47,29 +52,35 @@ const getItemCategories = async (categoryId) => {
       return data.path_from_root.map((category) => category.name);
     }
     return [];
+    } catch (err) {
+    res.status(500).send({ err: err.message });
+   }
 };
 
 const fetchProductById = async (req, res) => {
+  try {
     const { itemId } = req.params;
     const itemRequest = await axios.get(`${API_URL}${ITEMS}${itemId}`);
 
-    const { item } = itemRequest;
-    if (item) {
+    const { data } = itemRequest;
+    if (data) {
       const itemDescRequest = await getItemDescription(itemId);
-      const categories = await getItemCategories(item.category_id);
-
+      const categories = await getItemCategories(data.category_id);
       const result = {
         author: {
           name: 'Esteban',
           lastname: 'Ramirez',
         },
         categories: categories,
-        item: itemDetailMapper(item, itemDescRequest),
+        item: itemDetailMapper(data, itemDescRequest),
       };
       return res.status(200).send(result);
     } else {
       return res.status(404).send({ msg: `item not found` });
     }
+  } catch (err) {
+    res.status(500).send({ err: err.message });
+   }
 };
 
 module.exports = {
